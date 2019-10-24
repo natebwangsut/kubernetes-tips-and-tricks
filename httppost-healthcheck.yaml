@@ -1,0 +1,14 @@
+      containers:
+        - name:  k8-byexamples-spring-rest
+          image: gcr.io/matthewdavis-byexamples/k8-byexamples-spring-rest:1d4c1401c9485ef61322d9f2bb33157951eb351f
+          ports:
+            - containerPort: 8080
+              name: http
+          livenessProbe:
+            exec:
+              command:
+                - curl
+                - -X POST
+                - http://localhost/test123
+            initialDelaySeconds: 5
+            periodSeconds: 5
